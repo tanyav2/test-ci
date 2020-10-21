@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: rust:latest
+    steps:
+      - checkout
+      - run:
+          name: Check formatting
+          command: cargo fmt -- --check
+      - run:
+          name: Stable Build
+          command: cargo build
+      - run:
+          name: Test
+          command: cargo test
